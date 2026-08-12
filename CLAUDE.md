@@ -1,4 +1,7 @@
-# com-etzhayyim-kazaori — CLAUDE.md
+# cloud-itonami/actor-kazaori — CLAUDE.md
+
+Canonical repository: `https://github.com/cloud-itonami/actor-kazaori`.
+The former `etzhayyim/com-etzhayyim-kazaori` path is a compatibility redirect.
 
 ## Identity
 

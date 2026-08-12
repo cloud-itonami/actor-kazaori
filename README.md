@@ -1,5 +1,10 @@
 # kazaori (風折) — Non-profit Religious-Corp Civilian Disaster Response Substrate
 
+Canonical repository: `cloud-itonami/actor-kazaori`. This governed, resident
+civilian-response actor belongs to the Itonami public-operations plane. Its
+emergency effects remain declaration-, consent-, and audit-gated; Tamaki
+separately owns artificial-organism evolution.
+
 **DID**: `did:web:kazaori.etzhayyim.com`
 **Namespace**: `com.etzhayyim.kazaori.*`
 **ADR**: ADR-2605263200 (R0 scaffold)

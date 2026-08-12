@@ -1,0 +1,5 @@
+{:repo/id "cloud-itonami/actor-kazaori"
+ :repo/aliases ["etzhayyim/com-etzhayyim-kazaori"]
+ :repo/role :governed-executable-actor
+ :repo/execution :resident
+ :repo/boundary "Civilian community disaster response only; emergency declaration gates effects and Tamaki owns organism evolution."}
