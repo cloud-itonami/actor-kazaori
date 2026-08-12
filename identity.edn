@@ -1,5 +1,7 @@
 {:identity/id "did:web:kazaori.etzhayyim.com"
  :identity/actor "kazaori"
+ :identity/repository "https://github.com/cloud-itonami/actor-kazaori"
+ :identity/repository-aliases ["https://github.com/etzhayyim/com-etzhayyim-kazaori"]
  :identity/canonical-document "manifest.edn"
  :identity/external-did-document ".well-known/did.json"
  :identity/canonical-format :edn}
