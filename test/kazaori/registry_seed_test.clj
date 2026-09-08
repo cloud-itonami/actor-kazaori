@@ -1,6 +1,6 @@
 (ns kazaori.registry-seed-test
   (:require [clojure.edn :as edn]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is testing]]))
 
 (def seed-path "registry/agencies.seed.edn")
