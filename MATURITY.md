@@ -18,11 +18,11 @@ honest framing (G8): できていないことは「未」と明記する。
 ### 2026-06-17 (loop) — manifest+lexicon charter-gate test (構造ゲート pin)
 既存 registry-seed テストが被覆していなかった **manifest G1–G12 + 6 lexicon の災害対応ゲート**を新設 `methods/test_charter_gates.cljc`(**7 tests green**, standalone・network-free)で固定: (1) manifest 厳密に G1–G12。(2) **G10/G5** emergencyDeclaration const `civilianOnlyAttested=true` + councilAttestations + autoLiftAtUtc + initialDurationDays(Council宣言・自動解除)。(3) **G6/G4** silenKazaoriReview const surveillancePenetrationPct=0 + commercialDisasterMgmtSoftwarePenetrationPct=0 + civilianOnlyCompliance=true + reviewCompletedWithin90DaysOfLifting=true。(4) **G9 Sphere** review が sphereCompliance + water/food/health/shelter/protection attested。(5) **G8** emergencyCarveOutLog が autoRevokeAtUtc + councilAttestations + carveOutJustificationCid + gateCarved(時限carve-out)。(6) supply dispatch が carve-out gated。(7) **G6** evacuationCheckIn が encryptedPayloadCid + memberSignature。`run_tests.sh` 新設。working-tree edits only。
 
-> **2026-06-17 substrate-native migration (ADR-2606160842):** the charter-gate test above was ported Python→Clojure (`methods/test_charter_gates.py` → `methods/test_charter_gates.cljc`, ns `kazaori.methods.test-charter-gates`, reads the lexicons via cheshire/edn) and the Python was pruned. Run via `./run_tests.sh` (now `exec bb`) or `bb run test:charter` (all 34 charter suites; 244 tests / 924 assertions green). Assertions unchanged (1:1 port).
+> **2026-06-17 substrate-native migration (ADR-2606160842):** the charter-gate test above was ported Python→Clojure (`methods/test_charter_gates.py` → `methods/test_charter_gates.cljc`, ns `kazaori.methods.test-charter-gates`, reads the lexicons via cheshire/edn) and the Python was pruned. Run via `./run_tests.sh` (now `exec bb`) or `kbb -M:test:charter` (all 34 charter suites; 244 tests / 924 assertions green). Assertions unchanged (1:1 port).
 
 ### 2026-07-06 (loop) — emergency 純関数エンジン新設(初の R0 offline engine)
 
-`methods/test_charter_gates.cljc` はこれまで manifest/lexicon の**構造**(G1–G12の定数・required項目)のみを固定し、**計算ロジック自体は存在しなかった**(honest gap: Methods = 未)。`methods/emergency.cljc`(新規、**10 tests green**、`test:kazaori` bb task 新設、`bb test:kazaori` = 19 tests / 44 assertions)で以下を実装:
+`methods/test_charter_gates.cljc` はこれまで manifest/lexicon の**構造**(G1–G12の定数・required項目)のみを固定し、**計算ロジック自体は存在しなかった**(honest gap: Methods = 未)。`methods/emergency.cljc`(新規、**10 tests green**、`test:kazaori` bb task 新設、`kbb -M:test:kazaori` = 19 tests / 44 assertions)で以下を実装:
 
 - `declare-emergency` — `autoLiftAtUtc` を `declaredStartUtc + initialDurationDays` から**計算**(呼び出し側が矛盾した値を渡せない)。`civilianOnlyAttested` は呼び出し側から設定不可・常に `true`(G5構造的)。Council attestation 4件未満・duration 60日超は reject(G8/G10)。
 - `activate-carve-out` — **`autoRevokeAtUtc` が親 emergency の `autoLiftAtUtc` を超えると reject**(carve-out が emergency より長生きできない、G8の核心を計算で検証)。
@@ -31,7 +31,7 @@ honest framing (G8): できていないことは「未」と明記する。
 
 drift guard: 5つの enum(declarationCategory/checkInMethod/dispatchCategory/supplySource/unitCode)をハードコードした自前 set と、実際の lexicon JSON の `knownValues` を突き合わせるテストを追加し、将来のドリフトを機械的に検出できるようにした。
 
-**不変条件は変化なし**: cell は引き続き import 時 RuntimeError・emergency declaration/dispatch の実行は無し。今回追加したのは「validate + record 構築」の純関数のみで、Council+operator gate 済みの live 実行経路とは別物(matsurigoto/wakai/toritate と同型のR0境界)。`run_tests.sh` を `exec bb test:kazaori` に更新(旧 `bb -e` ワンライナーの一本化)。
+**不変条件は変化なし**: cell は引き続き import 時 RuntimeError・emergency declaration/dispatch の実行は無し。今回追加したのは「validate + record 構築」の純関数のみで、Council+operator gate 済みの live 実行経路とは別物(matsurigoto/wakai/toritate と同型のR0境界)。`run_tests.sh` を `exec bb test:kazaori` に更新(旧 `kbb -e` ワンライナーの一本化)。
 
 ### 2026-07-18 — standalone EDN canonical migration
 
