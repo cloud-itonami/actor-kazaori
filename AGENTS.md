@@ -1,4 +1,4 @@
-# cloud-itonami/actor-kazaori — CLAUDE.md
+# cloud-itonami/actor-kazaori — AGENTS.md
 
 Canonical repository: `https://github.com/cloud-itonami/actor-kazaori`.
 The former `etzhayyim/com-etzhayyim-kazaori` path is a compatibility redirect.
@@ -168,6 +168,6 @@ python -c "from kotodama.cells.kazaori_emergency_declaration import _r0_marker" 
 - root ADR checkout pinned by `dependencies.edn`
 - flat west sibling actor repositories under `orgs/etzhayyim/com-etzhayyim-*`
 - `/CHARTER-RIDER.md` §2(e) + §2(c) — G4 + G6 sources
-- `/CLAUDE.md` — Status table row 72
+- `/AGENTS.md` — Status table row 72
 - Sphere Handbook (Sphere Standards) — open-publication reference
 - ICRC Code of Conduct — civilian-only doctrine reference

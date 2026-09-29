@@ -122,4 +122,4 @@ See ADR-2605263200 §6.
 - `lex/` (6 canonical EDN Lexicons) and `wire/` (external JSON)
 - root ADR checkout pinned by `dependencies.edn` — Master ADR and constitutional references
 - `/CHARTER-RIDER.md` §2(e) + §2(c) — G4 + G6 sources
-- `/CLAUDE.md` — Status table row 72
+- `/AGENTS.md` — Status table row 72
